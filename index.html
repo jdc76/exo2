@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<title>
+    Mes restaurants 
+</title>
+
+</head >
+
+<body>
+<h1 id="exo">Liste de mes restaurants</h1>
+  <!--on mettra la liste de srestos-->
+   <ul id="restaurants">
+   </ul>
+
+<script>
+  async function main() {
+  const result =  await fetch('http://localhost:3000/restaurants');
+  const restaurantList=document.getElementById("restaurants"); 
+   const restaurants=await result.json();
+   restaurants.forEach(restaurant => {
+    const liElement=document.createElement('li');
+    liElement.textContent=restaurant.name;
+    restaurantList.appendChild(liElement);
+       
+   });
+   
+       }
+     main(); 
+</script>
+</body>
+</html>
